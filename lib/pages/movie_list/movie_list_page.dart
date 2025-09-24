@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/pages/movie_list/movie_list_controller.dart';
+import 'package:movie_app/service_locator.dart';
 
 class MovieListPage extends StatefulWidget {
   const MovieListPage({super.key});
@@ -8,6 +10,14 @@ class MovieListPage extends StatefulWidget {
 }
 
 class _MovieListPageState extends State<MovieListPage> {
+  final controller = getIt<MovieListController>();
+
+  @override
+  void initState(){
+    controller.init();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
