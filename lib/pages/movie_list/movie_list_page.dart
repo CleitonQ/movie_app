@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/data/models/movie.dart';
 import 'package:movie_app/pages/movie_list/movie_list_controller.dart';
 import 'package:movie_app/service_locator.dart';
 
@@ -30,17 +31,26 @@ class _MovieListPageState extends State<MovieListPage> {
           ) // IconButton
         ], // actions
       ), // AppBar
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text('Filme 1'),
-          ), // ListTile
-          ListTile(
-            title: Text('Filme 2'),
-          ), // ListTile
-          // Adicione outros ListTile conforme necessário
-        ], // children
-      ), // ListView
-    ); // Scaffold
+        body: StreamBuilder<List<Movie>>(
+          stream: controller.stream,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Text('waiting');
+            }
+
+            var movies = snapshot.data!;
+
+            return ListView.builder(
+              itemCount: movies.length,
+              itemBuilder: (context, index) {
+                var movie = movies[index];
+                return ListTile(
+                  title: Text(movie.name),
+                ); // ListTile
+              }, // itemBuilder
+            ); // ListView.builder
+          },
+        )// builder
+      ); // StreamBuilder
+    }
   }
-}

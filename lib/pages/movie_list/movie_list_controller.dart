@@ -8,13 +8,15 @@ class MovieListController {
   final api = getIt<MovieApi>();
 
   final _controller = StreamController<List<Movie>>();
+  Stream<List<Movie>> get stream => _controller.stream;
 
   void init() {
     getMovies();
   }
 
-  void getMovies() {
-    var result = api.getMovies();
-    // Adicione qualquer manipulação do resultado aqui
+  Future<void> getMovies() async {
+    var result = await api.getMovies();
+
+    _controller.sink.add(result);
   }
 }
