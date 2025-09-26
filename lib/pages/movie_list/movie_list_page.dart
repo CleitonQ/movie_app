@@ -44,6 +44,7 @@ class _MovieListPageState extends State<MovieListPage> {
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 var movie = movies[index];
+
                 return ListTile(
                   title: Text(movie.name),
                 ); // ListTile
