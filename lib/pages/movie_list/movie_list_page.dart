@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/models/movie.dart';
 import 'package:movie_app/pages/movie_list/movie_list_controller.dart';
+import 'package:movie_app/pages/movie_list/widgets/progress_indicator_widget.dart';
 import 'package:movie_app/service_locator.dart';
 
 class MovieListPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _MovieListPageState extends State<MovieListPage> {
   final controller = getIt<MovieListController>();
 
   @override
-  void initState(){
+  void initState() {
     controller.init();
     super.initState();
   }
@@ -26,32 +27,30 @@ class _MovieListPageState extends State<MovieListPage> {
         title: const Text('Movie App'),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search)
-          ) // IconButton
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ), // IconButton
         ], // actions
       ), // AppBar
-        body: StreamBuilder<List<Movie>>(
-          stream: controller.stream,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Text('waiting');
-            }
+      body: StreamBuilder<List<Movie>>(
+        stream: controller.stream,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const ProgressIndicatorWidget();
+          }
 
-            var movies = snapshot.data!;
+          var movies = snapshot.data!;
 
-            return ListView.builder(
-              itemCount: movies.length,
-              itemBuilder: (context, index) {
-                var movie = movies[index];
+          return ListView.builder(
+            itemCount: movies.length,
+            itemBuilder: (context, index) {
+              var movie = movies[index];
 
-                return ListTile(
-                  title: Text(movie.name),
-                ); // ListTile
-              }, // itemBuilder
-            ); // ListView.builder
-          },
-        )// builder
-      ); // StreamBuilder
-    }
+              return ListTile(title: Text(movie.name)); // ListTile
+            }, // itemBuilder
+          ); // ListView.builder
+        },
+      ), // builder
+    ); // StreamBuilder
   }
+}
