@@ -46,7 +46,9 @@ class _MovieListPageState extends State<MovieListPage> {
             itemBuilder: (context, index) {
               var movie = movies[index];
 
-              return ListTile(title: Text(movie.name)); // ListTile
+              return ListTile(
+                  title: Text(movie.name)
+              ); // ListTile
             }, // itemBuilder
           ); // ListView.builder
         },
