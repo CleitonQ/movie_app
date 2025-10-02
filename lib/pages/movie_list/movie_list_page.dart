@@ -3,6 +3,7 @@ import 'package:movie_app/data/models/movie.dart';
 import 'package:movie_app/pages/movie_list/movie_list_controller.dart';
 import 'package:movie_app/pages/movie_list/widgets/progress_indicator_widget.dart';
 import 'package:movie_app/service_locator.dart';
+import 'package:movie_app/pages/movie_list/widgets/movie_item_widget.dart';
 
 class MovieListPage extends StatefulWidget {
   const MovieListPage({super.key});
@@ -46,9 +47,7 @@ class _MovieListPageState extends State<MovieListPage> {
             itemBuilder: (context, index) {
               var movie = movies[index];
 
-              return ListTile(
-                  title: Text(movie.name)
-              ); // ListTile
+              return MovieItemWidget(movie: movie,);
             }, // itemBuilder
           ); // ListView.builder
         },
