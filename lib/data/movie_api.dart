@@ -12,4 +12,10 @@ class MovieApi {
     ); // Corrected path
     return (response.data as List).map((item) => Movie.fromJson(item)).toList();
   }
+
+  Future<Movie> getMovie(int id) async {
+    var response = await _dio.get('/Filme/$id'); // Corrected path
+
+    return Movie.fromJson(response.data);
+  }
 }

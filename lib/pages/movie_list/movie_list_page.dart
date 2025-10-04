@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/models/movie.dart';
 import 'package:movie_app/pages/movie_list/movie_list_controller.dart';
-import 'package:movie_app/pages/movie_list/widgets/progress_indicator_widget.dart';
+import 'package:movie_app/widgets/progress_indicator_widget.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/pages/movie_list/widgets/movie_item_widget.dart';
 
