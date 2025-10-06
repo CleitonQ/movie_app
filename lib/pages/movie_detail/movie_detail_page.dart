@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/models/movie.dart';
 import 'package:movie_app/pages/movie_detail/movie_detail_controller.dart';
+import 'package:movie_app/pages/movie_detail/widgets/movie_detail_about_widget.dart';
+import 'package:movie_app/pages/movie_detail/widgets/movie_detail_cover_widget.dart';
 import 'package:movie_app/widgets/progress_indicator_widget.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/pages/movie_list/widgets/movie_item_widget.dart';
@@ -34,18 +36,22 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     var movie = widget.movie;
 
     return Scaffold(
-      appBar: AppBar(),
       body: StreamBuilder<Movie>(
         initialData: widget.movie,
         stream: controller.stream,
         builder: (context, snapshot) {
           var movie = snapshot.data!;
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-           return const ProgressIndicatorWidget();
-           }
+         // if (snapshot.connectionState == ConnectionState.waiting) {
+         // return const ProgressIndicatorWidget();
+         // }
 
-          return Text(movie.name);
+          return CustomScrollView(
+           slivers: [
+             MovieDetailCoverWidget(movie: movie),
+             MovieDetailAboutWidget(movie: movie),
+            ],
+          );
         },
       ),
     );
