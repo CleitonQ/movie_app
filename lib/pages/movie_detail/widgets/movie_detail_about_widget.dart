@@ -40,4 +40,5 @@ class MovieDetailAboutWidget extends StatelessWidget {
       ), // Container
     ); // SliverToBoxAdapter
   }
+  Icon _buildIcon() => Icon(Icons.calendar_month_outlined, color: Colors.amber, size: 16,);
 }
