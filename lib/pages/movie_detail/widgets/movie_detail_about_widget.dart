@@ -16,6 +16,7 @@ class MovieDetailAboutWidget extends StatelessWidget {
           children: [
             Row(
               children: [
+                Icon(Icons.calendar_month_outlined, color: Colors.amber, size: 16,),
                 Text('Ano ${movie.year}'),
                 const SizedBox(height: 16.0),
                 Row(
@@ -40,5 +41,4 @@ class MovieDetailAboutWidget extends StatelessWidget {
       ), // Container
     ); // SliverToBoxAdapter
   }
-  Icon _buildIcon() => Icon(Icons.calendar_month_outlined, color: Colors.amber, size: 16,);
 }
