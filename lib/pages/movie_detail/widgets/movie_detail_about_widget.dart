@@ -11,31 +11,42 @@ class MovieDetailAboutWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                _buildIcon(Icons.calendar_month_outlined),
+                Padding(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: _buildIcon(Icons.calendar_month_outlined),
+                ),
                 Text(' Ano ${movie.year} '),
-                const SizedBox(height: 16.0),
-                Row(
-                  children: [
-                    Text(
-                      prettyDuration(
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 4.0),
+                  child: _buildIcon(Icons.timer_outlined),
+                ),
+                Text(
+                    prettyDuration(
                         Duration(minutes: movie.duration),
                         abbreviated: true,
                         delimiter: ' ',
                         spacer: ''
-                      )
-                    ),
-                    const Text(' | '),
-                    Text(movie.gender),
-                  ], // children
-                ), // Row
-                const SizedBox(height: 8.0),
+                    )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 4.0),
+                  child: _buildIcon(Icons.category),
+                ),
+                Text(movie.gender),
               ], // children do Row
-            ), // Row
+            ),
+            const SizedBox(height: 16.0),
+            Text(
+              'Sinopse',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            Text(movie.description),// Row
           ], // children do Column
         ), // Column
       ), // Container
