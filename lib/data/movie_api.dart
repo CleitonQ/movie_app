@@ -18,4 +18,8 @@ class MovieApi {
 
     return Movie.fromJson(response.data);
   }
+
+  Future<void> deleteComment(int movieId, int id) async {
+    await _dio.get('/Filme/$movieId/Comentario/$id'); // Corrected path
+  }
 }
