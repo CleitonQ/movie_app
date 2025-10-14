@@ -25,6 +25,7 @@ class MovieDetailCommentsWidget extends StatelessWidget {
                 const SizedBox(width: 12.0,),
                 const Text('-'), // bullet point
                 TextButton(
+                  
                     onPressed: () {},
                     style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
                     child: const Text('Excluir')
