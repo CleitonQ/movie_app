@@ -20,6 +20,6 @@ class MovieApi {
   }
 
   Future<void> deleteComment(int movieId, int id) async {
-    await _dio.get('/Filme/$movieId/Comentario/$id'); // Corrected path
+    await _dio.delete('/Filme/$movieId/Comentario/$id'); // Corrected path
   }
 }
