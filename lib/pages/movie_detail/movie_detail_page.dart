@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/models/movie.dart';
 import 'package:movie_app/pages/movie_detail/movie_detail_controller.dart';
+import 'package:movie_app/pages/movie_detail/widgets/add_comment_widget.dart';
 import 'package:movie_app/pages/movie_detail/widgets/movie_detail_about_widget.dart';
 import 'package:movie_app/pages/movie_detail/widgets/movie_detail_comments_widget.dart';
 import 'package:movie_app/pages/movie_detail/widgets/movie_detail_cover_widget.dart';
@@ -73,8 +74,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                    ),
                  ),
                )
-             else
-               MovieDetailCommentsWidget(movie: movie,)
+              else MovieDetailCommentsWidget(movie: movie,),
+              const AddCommentWidget(),
             ],
           );
         },

@@ -21,10 +21,10 @@ Widget build(BuildContext context) {
     actions: [
       TextButton(
         onPressed: () => Navigator.pop(context),
-        child: const Text('Cancelar!'),
+        child: const Text('Cancelar'),
       ),
       TextButton(
-        onPressed: isWaiting ? onDeleted : null,
+        onPressed: !isWaiting ? onDeleted : null,
         child: const Text('Excluir'),
       ),
     ],
