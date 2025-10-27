@@ -30,6 +30,7 @@ class _AddCommentWidgetState extends State<AddCommentWidget> {
                         focusNode: commentNode,
                         controller: commentController,
                         textCapitalization: TextCapitalization.sentences,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration.collapsed(
                           hintText: 'Adicione um comentário...'
                         ),
